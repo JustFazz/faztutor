@@ -5,26 +5,15 @@
 
 ]]
 
-local fazzstring = ""
-local fazz = 0
+local fazzstring: string = ""
+local fazz: int = 0
 
-local loadstring = function(d)
+local loadstring: any = function(d)
     writefile("dump", fazz .. tostring(fazzstring) .. "\n" .. d)
-
-    local t, r = ...
-
-    task.spawn(function()
-        while task.wait() do
-            pcall(function()
-                local g = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ErrorPrompt
-                g.TitleFrame.ErrorTitle.Text = t
-                g.MessageArea.ErrorFrame.ErrorMessage.Text = r
-            end)
-        end
-    end)
+    println(fazzstring)
 end
 
-local dumb = function(a)
+local dumb: any = function(a)
     fazz += 1
     fazzstring = a
     return a
